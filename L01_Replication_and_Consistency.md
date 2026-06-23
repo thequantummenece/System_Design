@@ -260,8 +260,7 @@ Not an algorithmic lecture, but the operational cost profile:
 ### Core
 1. **(Conceptual)** In your own words, explain why semi-synchronous replication is the common production default. What specific failure does the single synchronous follower protect against, and what does keeping the rest asynchronous preserve?
 2. **(Conceptual)** Give a fresh real-world operation (not bank/likes/seat/bio) and classify it CP or AP. State the invariant (or its absence) and what the system should do during a partition.
-3. **(Reading)** Finish the Replication chapter's remaining sections you skipped (replication-log internals, multi-leader topologies). For multi-leader, write one sentence on the kind of application it suits and *why*.
-
+3. 
 ### Advanced
 4. **(Design)** Sketch read-your-writes for a profile page where a user edits their own bio but also views others' bios. Which reads hit the leader, which can hit followers, and how does a write-position token let you serve *some* of the user's own reads from a follower?
 5. **(Trade-off)** DynamoDB-style systems often default to LWW. Given everything about silent data loss, why is that a *defensible* default for many workloads? When is it indefensible? Be precise about the workload property that flips the answer.
@@ -270,6 +269,4 @@ Not an algorithmic lecture, but the operational cost profile:
 6. **(Synthesis)** Construct a concrete interleaving where a leaderless quorum with `w + r > n` *still* returns a stale or surprising result despite the overlap. (Hint: think concurrent writes, or a write that succeeded on some nodes but failed the quorum.) This previews "Limitations of Quorum Consistency."
 
 ### Reflection
-7. Where in this lecture did your first instinct turn out backwards, and what was the corrected principle? (You have two strong candidates.) Writing this down cements the *reasoning move*, not just the fact.
-
-**Next session opens with:** your answer to Challenge #6, leading into **leaderless quorum limitations → linearizability → consensus (Raft)**.
+7. Where in this lecture did your first instinct turn out backwards, and what was the corrected principle? Writing this down cements the *reasoning move*, not just the fact.
